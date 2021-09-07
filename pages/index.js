@@ -13,9 +13,9 @@ export async function getStaticProps() {
   const featuredEvents = await getFeaturedEvents();
   return {
     props: {
-      events: featuredEvents
-    }
-  }
+      events: featuredEvents,
+    },
+  };
 }
 
 export default HomePage;
