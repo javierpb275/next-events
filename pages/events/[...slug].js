@@ -1,6 +1,5 @@
 import { Fragment, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import useSWR from 'swr';
 import EventList from '../../components/events/event-list';
 import ResultsTitle from '../../components/events/results-title';
 import Button from '../../components/ui/button';
@@ -12,11 +11,12 @@ const FilteredEventsPage = (props) => {
 
   const filterData = router.query.slug;
 
-  const { data, error } = useSWR(
-    'https://nextjs-course-8044b-default-rtdb.firebaseio.com/events.json'
-  );
+  useEffect(async () => {
 
-  useEffect(() => {
+    const response = await fetch('https://nextjs-course-8044b-default-rtdb.firebaseio.com/events.json');
+
+    const data = await response.json();
+
     if (data) {
       const events = [];
 
@@ -29,7 +29,7 @@ const FilteredEventsPage = (props) => {
 
       setLoadedEvents(events);
     }
-  }, [data]);
+  }, []);
 
   if (!loadedEvents) {
     return <p className='center'>Loading...</p>;
@@ -47,8 +47,7 @@ const FilteredEventsPage = (props) => {
     numYear > 2030 ||
     numYear < 2021 ||
     numMonth < 1 ||
-    numMonth > 12 ||
-    error
+    numMonth > 12 
   ) {
     return (
       <Fragment>
