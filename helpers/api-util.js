@@ -4,7 +4,7 @@ export const getAllEvents = async () => {
   );
   const data = await response.json();
   const events = [];
-  for (const key of data) {
+  for (const key in data) {
     events.push({
       id: key,
       ...data[key],
