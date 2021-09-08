@@ -36,10 +36,7 @@ const FilteredEventsPage = (props) => {
   let pageHeadData = (
     <Head>
       <title>Filtered Events</title>
-      <meta
-        name="description"
-        content={`Al list of filtered events`}
-      />
+      <meta name="description" content={`A list of filtered events`} />
     </Head>
   );
 
