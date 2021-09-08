@@ -38,7 +38,7 @@ export async function getStaticProps(context) {
     props: {
       selectedEvent: event,
     },
-    revalidate: 30
+    revalidate: 30,
   };
 }
 
@@ -47,8 +47,7 @@ export async function getStaticPaths() {
   const paths = events.map((event) => ({ params: { eventId: event.id } }));
   return {
     paths,
-    //fallback: true,//we tell nextjs that there are more pages that we pregenerate.
-    fallback: 'blocking',//nextjs will not serve anything until we're done generating this page
+    fallback: "blocking",
   };
 }
 

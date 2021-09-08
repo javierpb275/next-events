@@ -11,7 +11,7 @@ const EventItem = (props) => {
     month: "long",
     year: "numeric",
   });
-  const theAddress = location.replace(", ", "\n"); //replaced ', ' for /n (line break)
+  const theAddress = location.replace(", ", "\n");
   const exploreLink = `/events/${id}`;
   return (
     <li className={classes.item}>
