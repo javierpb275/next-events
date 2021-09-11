@@ -8,9 +8,7 @@ const handler = async (req, res) => {
       return;
     }
 
-    const client = await MongoClient.connect(
-      "mongodb+srv://nexteventsapp:nexteventsapp@cluster0.cjzju.mongodb.net/nextevents-api?retryWrites=true&w=majority"
-    );
+    const client = await MongoClient.connect(process.env.DB_URL);
     const db = client.db();
     await db.collection("emails").insertOne({ email: userEmail });
     client.close();
